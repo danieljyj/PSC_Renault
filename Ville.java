@@ -1,11 +1,11 @@
 
 public class Ville {
-	private int height, width;
-	private Cell[][] grid;
+	public int height, width;
+	public Cell[][] grid;
 	
 	Ville(){
-		this.height=100;
-		this.width=100;
+		this.height=10;
+		this.width=10;
 		this.grid=new Cell[height][width];
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {
@@ -20,7 +20,24 @@ public class Ville {
 		int time=1;
 		int t=0;
 		Ville paris=new Ville();
+		//initialisation
+		for(int i=0;i<paris.grid.length;i++) {
+			for(int j=0;j<paris.grid[i].length;j++) {
+				paris.grid[i][j].addTaxi(new Taxi(i,j));
+				paris.grid[i][j].addClient(new Client(i,j,(int) Math.random()*paris.height, (int) Math.random()*paris.width));
+			}
+		}
+		
+		
 		for(;t<time;t++) {	
+			
+			
+			
+			
+			
+			
+			
+		//afficher cette ville 
 			for(int i=0;i<paris.grid.length;i++) {
 				for(int j=0;j<paris.grid[i].length;j++) {
 					System.out.print(paris.grid[i][j]);
