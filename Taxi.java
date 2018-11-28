@@ -4,7 +4,7 @@ public class Taxi {
 	int posx, posy;
 	final int capacity=6;
 	int client;
-	taxi(int posx, int posy){
+	Taxi(int posx, int posy){
 		this.posx=posx;
 		this.posy=posy;
 		
