@@ -6,4 +6,14 @@ public class Pair {
 		this.x=x;
 		this.y=y;
 	}
+	static int dist(Pair a, Pair b) {
+		int distx=b.x-a.x;
+		int disty=b.y-a.y;
+		return distx*distx+disty*disty;
+	}
+	
+	public boolean equals(Object o) {
+		Pair p=(Pair) o;
+		return p.x==this.x&&p.y==this.y;
+	}
 }

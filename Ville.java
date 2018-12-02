@@ -17,20 +17,26 @@ public class Ville {
 
 	
 	public static void main(String[] args) {
-		int time=1;
+		int toltime=1;
 		int t=0;
 		Ville paris=new Ville();
 		//initialisation
-		for(int i=0;i<paris.grid.length;i++) {
-			for(int j=0;j<paris.grid[i].length;j++) {
+		for(int i=0;i<paris.width;i++) {
+			for(int j=0;j<paris.height;j++) {
 				paris.grid[i][j].addTaxi(new Taxi(new Pair(i,j)));
 				paris.grid[i][j].addClient(new Client(new Pair(i,j),new Pair((int) Math.random()*paris.height, (int) Math.random()*paris.width)));
 			}
 		}
 		
 		//fonctionner
-		for(;t<time;t++) {	
-			
+		for(;t<toltime;t++) {	
+			for(int i=0;i<paris.width;i++){
+				for(int j=0;j<paris.height;j++) {
+					for(Taxi taxi : paris.grid[i][j].taxis) {
+						taxi.move();
+					}
+				}
+			}
 			
 			
 			
