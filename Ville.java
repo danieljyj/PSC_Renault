@@ -9,7 +9,7 @@ public class Ville {
 		this.grid=new Cell[height][width];
 		for(int i=0;i<grid.length;i++) {
 			for(int j=0;j<grid[i].length;j++) {
-				this.grid[i][j]=new Cell(i,j);
+				this.grid[i][j]=new Cell(new Pair(i,j));
 			}
 		}
 	}
@@ -23,8 +23,8 @@ public class Ville {
 		//initialisation
 		for(int i=0;i<paris.grid.length;i++) {
 			for(int j=0;j<paris.grid[i].length;j++) {
-				paris.grid[i][j].addTaxi(new Taxi(i,j));
-				paris.grid[i][j].addClient(new Client(i,j,(int) Math.random()*paris.height, (int) Math.random()*paris.width));
+				paris.grid[i][j].addTaxi(new Taxi(new Pair(i,j)));
+				paris.grid[i][j].addClient(new Client(new Pair(i,j),new Pair((int) Math.random()*paris.height, (int) Math.random()*paris.width)));
 			}
 		}
 		
