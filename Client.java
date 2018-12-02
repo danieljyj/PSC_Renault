@@ -1,25 +1,22 @@
 
 public class Client {
-	int posx;
-	int posy;
-	int destx;
-	int desty;
+	Pair pos;
+	Pair des;
+	int timer;
 	//typedetrajet;
 	double waittime;
 	double traveltime;
 	double tolerancetime;
-	Client(int posx, int posy, int destx, int desty){
-		this.posx = posx;
-		this.posy = posy;
-		this.destx = destx;
-		this.desty = desty;
+	Client(Pair pos, Pair des){
+		this.pos = pos;
+		this.des = des;
+		this.timer = 0;
 	}
-	Client(int posx, int posy, int destx, int desty, double tolerancetime) {
-		this.posx = posx;
-		this.posy = posy;
-		this.destx = destx;
-		this.desty = desty;
+	Client(Pair pos, Pair des, double tolerancetime) {
+		this.pos = pos;
+		this.des = des;
 		this.tolerancetime = tolerancetime;
+		this.timer = 0;
 	}
 	
 	
