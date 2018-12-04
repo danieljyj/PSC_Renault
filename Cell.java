@@ -1,23 +1,28 @@
 import java.util.HashSet;
+import java.util.LinkedList;
 
 public class Cell {
-	final int posx;
-	final int posy;
+	final Pair pos;
 	//Taxi[] t;
-	HashSet<Taxi> taxis=new HashSet<Taxi>();
+	//HashSet<Taxi> taxis=new HashSet<Taxi>();
+	LinkedList<Taxi> taxis= new LinkedList<Taxi>();
 	HashSet<Client> clients=new HashSet<Client>();
 	String property;
 	
-	Cell(int posx, int posy){
-		this.posx=posx;
-		this.posy=posy;
+	Cell(Pair pos){
+		this.pos=pos;
 	}
-	Cell(int posx, int posy, HashSet<Taxi> taxis, String property){
-		this.posx=posx;
-		this.posy=posy;
+	Cell(Pair pos,LinkedList<Taxi> taxis, String property){
+		this.pos=pos;
 		this.taxis=taxis;
 		this.property=property;
 	}
+	
+	/*Cell(Pair pos, HashSet<Taxi> taxis, String property){
+		this.pos=pos;
+		this.taxis=taxis;
+		this.property=property;
+	}*/
 	
 	public void addTaxi(Taxi taxi) {
 		this.taxis.add(taxi);
@@ -34,6 +39,6 @@ public class Cell {
 
 	
 	public String toString() {
-		return "["+"("+posx+" , "+posy+ ")"+", "+taxis.size()+", "+clients.size()+"]";
+		return "["+"("+pos.h+" , "+pos.w+ ")"+", "+taxis.size()+", "+clients.size()+"]";
 	}
 }
