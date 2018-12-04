@@ -2,7 +2,7 @@
 public class Client {
 	Pair pos;
 	Pair dest;
-	//typedetrajet;
+	//type of trip;
 	double waittime;
 	double traveltime;
 	double tolerancetime;
@@ -14,6 +14,9 @@ public class Client {
 		this.pos=pos;
 		this.dest=dest;
 		this.tolerancetime = tolerancetime;
+	}
+	public String toString() {
+		return  "["+pos+", "+ dest+ "]";
 	}
 	
 	
