@@ -20,8 +20,8 @@ public class Taxi {
 		this.cell=cell;
 	}*/
 	public void addClient(Client client) {
-		if(noc==6) {
-			System.out.println("error: noc is already 6!");
+		if(noc==capacity) {
+			System.out.println("error: noc reached already capacity!");
 			return;
 		}
 		this.clients.add(client);
@@ -35,8 +35,12 @@ public class Taxi {
 	public String toString() {
 		return  "<"+pos+", " + "noc=" + noc + ", "+"route= "+this.route+">";
 	}
+	
+	public void pickUp(Pair pos) {
+		route.addFirst(pos);
+	}
 
-	// TO BE COMPLETED
+	// calculate the route of taxi, stock only every client's destination
 	public void calRoute() {
 		for (Client c : this.clients) {
 			if (!this.route.contains(c.dest)) {
@@ -60,7 +64,7 @@ public class Taxi {
 			}
 		}
 	}
-
+//wait for refinement
 	public void move() {
 		
 		if(route.isEmpty()) {

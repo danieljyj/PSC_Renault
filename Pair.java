@@ -20,6 +20,6 @@ public class Pair {
 		return (p.h==this.h)&&(p.w==this.w);
 	}
 	public String toString() {
-		return "("+h+" , "+w+ ")";
+		return "("+h+", "+w+ ")";
 	}
 }
