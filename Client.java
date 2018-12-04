@@ -6,6 +6,7 @@ public class Client {
 	double waittime;
 	double traveltime;
 	double tolerancetime;
+	boolean willing=true;  //willing of transit
 	Client(Pair pos, Pair dest){
 		this.pos=pos;
 		this.dest=dest;

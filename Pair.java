@@ -11,12 +11,15 @@ public class Pair {
 		int distw=b.w-a.w;
 		return disth*disth+distw*distw;
 	}
+	public int hashCode() {	
+		return (13*h+19*w) & 0x7fffffff;	
+	}
 	
 	public boolean equals(Object o) {
 		Pair p=(Pair) o;
-		return p.h==this.h&&p.w==this.w;
+		return (p.h==this.h)&&(p.w==this.w);
 	}
 	public String toString() {
-		return "("+h+" , "+w+ ")";
+		return "("+h+", "+w+ ")";
 	}
 }

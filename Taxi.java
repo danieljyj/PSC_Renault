@@ -20,45 +20,58 @@ public class Taxi {
 		this.cell=cell;
 	}*/
 	public void addClient(Client client) {
+		if(noc==capacity) {
+			System.out.println("error: noc reached already capacity!");
+			return;
+		}
 		this.clients.add(client);
+		calRoute();
 		this.noc++;
 	}
 	public void delClient(Client client) {
 		this.clients.remove(client);
-		this.noc++;
+		this.noc--;
 	}
 	public String toString() {
-		return  "["+pos+", " + "noc=" + noc + "]";
+		return  "<"+pos+", " + "noc=" + noc + ", "+"route= "+this.route+">";
+	}
+	
+	public void pickUp(Pair pos) {
+		route.addFirst(pos);
 	}
 
-	// TO BE COMPLETED
+	// calculate the route of taxi, stock only every client's destination
 	public void calRoute() {
 		for (Client c : this.clients) {
 			if (!this.route.contains(c.dest)) {
 				int dist = Pair.dist(this.pos, c.dest);
-				if (route == null) {
+				if (route.isEmpty()) {
 					route.add(c.dest);
 				} else {
+					boolean hasAdded=false;
 					int i = 0;
 					for (Pair p : route) {
-						if (Pair.dist(p, this.pos) > dist) {
+						if (Pair.dist(this.pos, p) > dist) {
 							route.add(i, c.dest);
+							hasAdded=true;
 							break;
 						}
 						i++;
 					}
+					if(!hasAdded)
+						route.addLast(c.dest);
 				}
 			}
 		}
 	}
-
+//wait for refinement
 	public void move() {
-		this.calRoute();
+		
 		if(route.isEmpty()) {
 			System.out.println("route is empty");
 			return;
 		}
-		Pair p= route.getFirst();
+		Pair p= this.route.getFirst();
 		if(this.pos.h<p.h)
 			this.pos.h++;
 		else if(this.pos.h>p.h)
@@ -69,10 +82,11 @@ public class Taxi {
 			this.pos.w--;
 		if(this.pos.equals(p)) {
 			p=route.removeFirst();
-			for(Client c:clients) {
+			for(Client c : this.clients) {
 				if (c.dest.equals(p))
-					delClient(c);
+					this.delClient(c);
 			}
 		}
+
 	}
 }
