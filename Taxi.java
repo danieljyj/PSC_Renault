@@ -36,6 +36,7 @@ public class Taxi {
 		return  "<"+pos+", " + "noc=" + noc + ", "+"route= "+this.route+">";
 	}
 	
+	// pick up a client, wait for refinement
 	public void pickUp(Pair pos) {
 		route.addFirst(pos);
 	}
@@ -64,7 +65,7 @@ public class Taxi {
 			}
 		}
 	}
-//wait for refinement
+	//wait for refinement
 	public void move() {
 		
 		if(route.isEmpty()) {

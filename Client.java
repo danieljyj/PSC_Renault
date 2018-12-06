@@ -5,8 +5,8 @@ public class Client {
 	//type of trip;
 	double waittime;
 	double traveltime;
-	double tolerancetime;
-	boolean willing=true;  //willing of transit
+	double tolerancetime;	//tolerance time of waiting a taxi or in the taxi, not sure useful or not
+	boolean willing=true;  //willing of transit(agree or not to pick up another client, if he has already shared a ride, then willing= false )
 	Client(Pair pos, Pair dest){
 		this.pos=pos;
 		this.dest=dest;

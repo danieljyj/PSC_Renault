@@ -26,12 +26,12 @@ public class Ville {
 	}
 
 	public static void main(String[] args) {
-		int toltime = 1;
+		int toltime = 1;  // total times of operation
 		int t = 0;
 		Ville paris = new Ville();
 		int height = paris.height;
 		int width = paris.width;
-		double lambda = 0.5; // the rate of occurrence in each point.
+		double lambda = 0.5; // the rate of occurrence of client in each point.
 		// initialization
 		for (int i = 0; i < height; i++) {
 			for (int j = 0; j < width; j++) {
@@ -40,14 +40,13 @@ public class Ville {
 				paris.grid[i][j].taxis.getFirst().addClient(client);
 			}
 		}
-		// The original city
+		// display the original city
 		System.out.println("The original city");
 		for (int i = 0; i < paris.grid.length; i++) {
 			for (int j = 0; j < paris.grid[i].length; j++)
 				System.out.print(paris.grid[i][j]);
 			System.out.print("\n");
 		}
-
 		// show status of taxis
 		System.out.println("original status of taxis");
 		for (Taxi taxi : paris.taxis) {
@@ -83,7 +82,7 @@ public class Ville {
 						paris.grid[i][j].addClient(newClient);
 					}
 				}
-			// pickup new clients			
+			// pickup new clients , still wait for refinement		
 /*			for(Cell cell : paris.cells.values()) {
 				if(cell.noc==0)
 					continue;
