@@ -9,7 +9,7 @@ public class Ville {
 	HashSet<Taxi> taxis = new HashSet<Taxi>();
 
 	Ville() {
-		this.height = 10;
+		this.height =10;
 		this.width = 10;
 		this.grid = new Cell[height][width];
 		for (int i = 0; i < height; i++) {
@@ -26,7 +26,7 @@ public class Ville {
 	}
 
 	public static void main(String[] args) {
-		int toltime = 1;  // total times of operation
+		int toltime = 20;  // total times of operation
 		int t = 0;
 		Ville paris = new Ville();
 		int height = paris.height;
@@ -44,7 +44,8 @@ public class Ville {
 		System.out.println("The original city");
 		for (int i = 0; i < paris.grid.length; i++) {
 			for (int j = 0; j < paris.grid[i].length; j++)
-				System.out.print(paris.grid[i][j]);
+				//System.out.print(paris.grid[i][j]);
+			System.out.print(paris.grid[i][j].clients.size()+" ");
 			System.out.print("\n");
 		}
 		/*// show status of taxis
@@ -103,36 +104,54 @@ public class Ville {
 			}*/
 			//pick up a new client or not
 			for(Cell cell: paris.cells.values()) {
-				if(cell.noc == 0) continue;
+				if(cell.clients.size() == 0) continue;
+				//boolean flag = false;
+				//System.out.println("client size is : " +cell.clients.size()  +" in this cell");
 				//a decider a quel l'order gerer les clients, ici pour l'instant juste iterer par cell, et chaque cell 1 client chaque fois
 				//ici taxi dans les region que le temps d'arrive ne depasse pas uplimite de waiting time, supposon 1/3 du temps de voyage.
 				Client nclient = cell.clients.peek();
-				int dist = Pair.dist(nclient.pos, nclient.dest);
+				//System.out.println("client pos, dest sont " + nclient.pos + nclient.dest);
+				int dist =(int) Math.sqrt((double)(Pair.dist(nclient.pos, nclient.dest))) ;
 				int est, west, north, south;
-				est = (nclient.pos.w + dist*1/3 < width-1) ? nclient.pos.w + dist*1/3 : width -1 ;
-				west = (nclient.pos.w - dist*1/3 > 0) ? nclient.pos.w - dist*1/3 : 0 ;
-				north = (nclient.pos.h + dist*1/3 < height - 1) ? nclient.pos.h + dist*1/3 : height -1 ;
-				south = (nclient.pos.h - dist*1/3 > 0) ? nclient.pos.h - dist*1/3 : 0 ;
-				for(int i = est; i< west ;i++)
-					for(int j = north; j< south; j++) {
+					est = (nclient.pos.w + dist*1/10 +1 < width-1) ? nclient.pos.w + dist*1/10 +1 : width -1 ;
+					west = (nclient.pos.w - dist*1/10 -1 > 0) ? nclient.pos.w - dist*1/10 -1 : 0 ;
+					north = (nclient.pos.h + dist*1/10 +1 < height - 1) ? nclient.pos.h + dist*1/10 + 1 : height - 1 ;
+					south = (nclient.pos.h - dist*1/10 -1  > 0) ? nclient.pos.h - dist*1/10 - 1 : 0 ;
+				//System.out.println(dist +" "+ nclient.pos.h+" " + nclient.pos.w +" "+ "est =" + est + " west = " + west + " south =" + south + " north="  + north);
+				//while(flag == false) {
+				labelA:
+				for(int i = west; i< est ;i++)
+					for(int j = south; j< north; j++) {
 						for(Taxi tx : paris.grid[j][i].taxis) {
+							//System.out.println("this taxi currently has " + tx.clients.size() + "client");
+							//System.out.println("currently we are in the cell [i,j] = "+ "[" +i +"," + j + "]");
 							if(tx.pick(nclient)== true) {
+								//System.out.println("client size is : " +cell.clients.size());
+								//if(cell.clients.size() != 0) 
 								cell.clients.removeFirst();
-								continue;
+								//System.out.println("get new client\n");
+								//flag = true;
+								break labelA;
 							}
 						}
 					}
+				//}
 			}
 		
 		}
 
 		// display the city after operation
+		int totalleft= 0;
 		System.out.println("city after operation");
 		for (int i = 0; i < height; i++) {
-			for (int j = 0; j < width; j++)
-				System.out.print(paris.grid[i][j]);
+			for (int j = 0; j < width; j++) {
+				//System.out.print(paris.grid[i][j]);
+				System.out.print(paris.grid[i][j].clients.size()+" ");
+				totalleft += paris.grid[i][j].clients.size();
+			}
 			System.out.print("\n");
 		}
+		System.out.println(" \n N Client waiting: "+ totalleft);
 		// show status of taxis
 		/*System.out.println("final status of taxis");
 		for (Taxi taxi : paris.taxis) {

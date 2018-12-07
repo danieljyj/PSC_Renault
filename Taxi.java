@@ -66,11 +66,11 @@ public class Taxi {
 		}
 	}
 	//wait for refinement
-	public void move() {
-		
+	public void move() {		
 		if(route.isEmpty()) {
-			System.out.println("route is empty");
-			return;
+			//System.out.println("route is empty");
+			return;//no client, no move
+			
 		}
 		Pair p= this.route.getFirst();
 		if(this.pos.h<p.h)
@@ -94,8 +94,10 @@ public class Taxi {
 	//effectuer pick up, si taxi prend ce client, return true, update taxi statu; else return false;
 	public boolean pick(Client nclient) {
 		if(! this.pickornot(nclient)) return false;
-		this.clients.getFirst().willing = false;
 		this.clients.addLast(nclient);
+		if(this.clients.size() > 1)
+			this.clients.getFirst().willing = false;
+		//System.out.println("nclient is added");
 		this.route.add(nclient.dest);
 		this.route.addFirst(nclient.pos);
 		return true;
@@ -107,9 +109,10 @@ public class Taxi {
 	public boolean pickornot(Client nclient) {
 		//for(Client c : this.clients) if(c.willing == false) return false;
 		//en fait juste verifier le premier est suffisant, car noc ne depasse jamais 2 dans le cas courrant.
+		if(this.clients.size() == 0) return true;//车上没人就去接
 		Client current = this.clients.getFirst();
-		int disofcurrent = Pair.dist(current.dest, current.pos);
 		if(current.willing == false) return false;
+		int disofcurrent = Pair.dist(current.dest, current.pos);
 		//if(Pair.dist(this.pos, nclient.pos) >= 1/3 * Pair.dist(nclient.dest, nclient.pos)) return false;
 		int dist1;
 		dist1= Pair.dist(this.pos, nclient.pos);
