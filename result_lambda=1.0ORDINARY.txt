@@ -1,0 +1,2 @@
+not	rho	averageWaitTime	totalLeftClients	tolServedClients	clientRatio	rateOfSharing	taxiDistance	clientDistance	distanceRatio	tolEmptyDistance
+20800 0.9879326923076922 16.699656806919265 71009 639311 0.11107113752148798 1.6083821184959852 5845435 9701461 0.6025314125367303	614594
