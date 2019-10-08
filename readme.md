@@ -13,8 +13,8 @@ What you see here is the Java simulation.
 Here are some demonstration of our results:
 
 <div align="half">
-	<img src="./demo/percentage_of_utilisation.png" height="300px" alt="utilizaiton rate" >
-	<img src="./demo/average_waiting_time.png" height="300px" alt="average waiting time" >
+<img src="./demo/percentage_of_utilisation.png" height="300px" alt="utilizaiton rate" >
+<img src="./demo/average_waiting_time.png" height="300px" alt="average waiting time" >
 </div>
 
 The waiting client distribution fluctuate in time:
