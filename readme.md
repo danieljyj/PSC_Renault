@@ -12,10 +12,14 @@ What you see here is the Java simulation.
 ----
 Here are some demonstration of our results:
 
-<div align="half">
-<img src="./demo/percentage_of_utilisation.png" height="300px" alt="utilizaiton rate" >
-<img src="./demo/average_waiting_time.png" height="300px" alt="average waiting time" >
-</div>
+<center class="half">
+<img src="./demo/percentage_of_utilisation.png"  title="Logo" width="300" />
+<center>rate of utilisation</center>
+<img src="./demo/average_waiting_time.png"  title="Logo" width="300"/>
+<center>waiting time of client</center>
+
+</center>
 
 The waiting client distribution fluctuate in time:
 ![distribution fluctuation in time](./demo/distribution_selon_le_temps.png)
+<center>spatial client distribution fluctuation in time</center>
