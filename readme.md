@@ -8,10 +8,11 @@ we may be able to see robot-taxi serve in Paris in 2022.
 
 Our works focused on the fleet-sizing and pricing, composed by two parts: Mathematical modeling and JAVA simulation. 
 What you see here is the Java simulation.  
+
 ----
 Here are some demonstration of our results:
 
-<div align="center">
+<div align="half">
 	<img src="./demo/percentage_of_utilisation.png" height="300px" alt="utilizaiton rate" >
 	<img src="./demo/average_waiting_time.png" height="300px" alt="average waiting time" >
 </div>
