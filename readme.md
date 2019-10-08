@@ -18,4 +18,4 @@ Here are some demonstration of our results:
 </div>
 
 The waiting client distribution fluctuate in time:
-![](./demo/distribution_selon_le_temps.png)
+![distribution fluctuation in time](./demo/distribution_selon_le_temps.png)
