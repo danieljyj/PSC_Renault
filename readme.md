@@ -6,7 +6,7 @@ This project is under the supervision of Renault and Departement of mathematics 
 concerns the optimisation of robot-taxi service(driveless, electrical, sharing, dynamic dispatching). According to the ambition of Renault, 
 we may be able to see robot-taxi serve in Paris in 2022.
 
-Our works focused on the fleet-sizing and pricing, composed by two parts: Mathematical modeling and JAVA simulation. 
+Our works focused on the fleet-sizing and pricing, composed of two parts: Mathematical modeling and JAVA simulation. 
 What you see here is the Java simulation.  
 
 ----
@@ -15,23 +15,24 @@ What you see here is the Java simulation.
 <img src="./demo/model.png" width="300" />
 </center>
 
-The city is segmented into a square grid, there is a dispatching algorithme to distribute a taxi to a client and to share a ride between clients.
+The city is segmented into a square grid, clients appear randmoly according to a Poisson Process at each node. A dispatching algorithme is in charge of manoeuvring taxis and deciding how to share a ride between clients.
 
 
 ### Some demonstrations of our results:
 
-<center class="half">
+1. <center class="half">
 <img src="./demo/percentage_of_utilisation.png"  title="Logo" width="300" />
 <center>rate of utilisation</center>
+
+2. 
 <img src="./demo/average_waiting_time.png"  title="Logo" width="300"/>
 <center>waiting time of client</center>
 </center>
 
-The waiting client distribution fluctuate in time:
+3. 
 ![distribution fluctuation in time](./demo/distribution_selon_le_temps.png)
 <center>spatial client distribution fluctuation in time</center>
 
 ---------
-### Our final result: 
 
-In the case of Paris, we need 8600 robot-taxi to satisfy all clients instead of the current number 16000!
+Combining the result of mathematical modeling and this simulation, it turns out that we need 8600 robot-taxis to satisfy all clients instead of the current number 16000!
